@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tops Technologies</title>
+    <style>
+         
+        .all {
+            display: flex;
+        }
+        
+        
+        .Technologies {
+            margin-top: 20px;
+            border: 2px solid black;
+            padding: 10px;
+        }
+        
+        .main {
+           
+            padding: 10px;
+            
+        }
+        .header {
+            border: 2px solid black;
+            padding: 15px;
+            margin-bottom: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-style: italic;
+            font-size: 50px;
+            color: blue;
+        }
+        .navbar {
+            text-align: center;
+            margin-right: 20px; 
+             gap: 80px;
+            border: 2px solid black;
+            padding: 20px ;
+        }
+        .navbar a {
+            color: black;
+            font-size: 18px;
+        }
+        .content-box {
+            border: 2px solid black;
+            margin-top: 10px;
+            padding: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="all">
+    
+    <div style="width:150px; padding:10px; border-right:2px solid black;">
+        <div>
+            <img src="tops.webp"  height="150" width="150" />
+        </div>
+        <div class="Technologies">
+            <h3>Technologies</h3>
+            <a href="https://www.geeksforgeeks.org/python">Python</a><br>
+            <a href="https://www.geeksforgeeks.org/php/php-introduction/">PHP</a><br >
+            <a href="https://www.geeksforgeeks.org/javascript/javascript-tutorial/">JavaScript</a>
+        </div>
+    </div>
+
+    
+    <div class="main">
+        <div class="header">Tops Technologies </div>
+
+        <div class="navbar">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="contact us.html">Contact Us</a>
+            <a href="#courses">Courses</a>
+        </div>
+
+        <div class="content-box">
+            <p>IT training and placement company
+TOPS Technologies is a prominent IT training and placement company based in Ahmedabad, India, established in 2008. It offers a wide range of courses in software development, web and mobile app development, data science, and more. The company has a strong track record of 100% job placement support through partnerships with over 3,000 IT companies and conducts events like JobFest to help students find job opportunities. TOPS Technologies is recognized for its hands-on training approach, industry-expert faculty, and has trained over 1 lakh students across various IT domains, including ASP.Net, PHP, Java, and more.</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
