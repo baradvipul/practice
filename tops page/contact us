@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact us Form</title>
+</head>
+<body>
+
+<h2>Contact Us Form</h2>
+
+<form>
+    Name: <input type="text" /><br><br>
+    Email: <input type="email" /><br><br>
+    Message: <textarea></textarea><br><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
