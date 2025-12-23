@@ -1,0 +1,11 @@
+DELIMITER $$
+
+CREATE TRIGGER subscriber_after_insert
+AFTER INSERT ON subscriber
+FOR EACH ROW
+BEGIN
+    INSERT INTO audit_subscriber (fnmae, timinga, action)
+    VALUES (NEW.fnmae, NOW(), 'INSERT');
+END$$
+
+DELIMITER ;
