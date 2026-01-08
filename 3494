@@ -1,0 +1,119 @@
+<?php
+require_once("navbar.php");
+require_once("config.php");
+
+/* =========================
+   FETCH DATA FOR EDIT
+   ========================= */
+if (isset($_GET["edit_id"])) {
+    $edit_id = $_GET["edit_id"];
+
+    $select = "SELECT tbl_task.*, tbl_assignto.username 
+               FROM tbl_task 
+               JOIN tbl_assignto ON tbl_task.userid = tbl_assignto.userid 
+               WHERE tbl_task.taskid = '$edit_id'";
+
+    $query = mysqli_query($conn, $select);
+    $fetch = mysqli_fetch_assoc($query);
+}
+
+/* =========================
+   UPDATE TASK
+   ========================= */
+if (isset($_POST["updatetask"])) {
+
+    echo "<pre>";
+    print_r($_POST);   // DEBUG (remove after testing)
+    echo "</pre>";
+
+    $edit_id    = $_POST['edit_id'] ?? '';
+    $taskname   = $_POST['task_name'] ?? '';
+    $assign     = $_POST['assign_to'] ?? '';
+    $status     = $_POST['status'] ?? '';
+    $added_date = $_POST['added_date'] ?? '';
+
+    if ($edit_id == '') {
+        die("Edit ID missing!");
+    }
+
+    $upd = "UPDATE tbl_task SET
+            taskname   = '$taskname',
+            userid     = '$assign',
+            status     = '$status',
+            added_date = '$added_date'
+            WHERE taskid = '$edit_id'";
+
+    $query = mysqli_query($conn, $upd);
+
+    if (!$query) {
+        die("MYSQL ERROR: " . mysqli_error($conn));
+    }
+
+    echo "<script>
+        alert('Task updated successfully');
+        window.location='index.php';
+    </script>";
+}
+?>
+
+<!-- =========================
+     HTML FORM
+     ========================= -->
+
+<section id="content" class="container w-50 p-3 mt-5">
+<h3>Edit Task</h3>
+
+<form method="post">
+
+<!-- Hidden ID -->
+<input type="hidden" name="edit_id" value="<?php echo $fetch['taskid']; ?>">
+
+<div class="form-group mt-3">
+<label class="text-success">Edit Task Name *</label>
+<input type="text" name="task_name"
+       value="<?php echo $fetch['taskname']; ?>"
+       class="form-control" required>
+</div>
+
+<div class="form-group mt-3">
+<label class="text-success">Assign To *</label>
+<select name="assign_to" class="form-control" required>
+<option value="">-- Assign To --</option>
+
+<?php
+$select1 = "SELECT * FROM tbl_assignto";
+$query1  = mysqli_query($conn, $select1);
+while ($row = mysqli_fetch_assoc($query1)) {
+?>
+<option value="<?php echo $row['userid']; ?>"
+<?php if ($row['userid'] == $fetch['userid']) echo "selected"; ?>>
+<?php echo $row['username']; ?>
+</option>
+<?php } ?>
+
+</select>
+</div>
+
+<div class="form-group mt-3">
+<label class="text-success">Status *</label>
+<select name="status" class="form-control" required>
+<option value="pending"   <?php if ($fetch['status']=='pending') echo "selected"; ?>>Pending</option>
+<option value="completed" <?php if ($fetch['status']=='completed') echo "selected"; ?>>Completed</option>
+</select>
+</div>
+
+<div class="form-group mt-3">
+<label class="text-success">Edit Date *</label>
+<input type="date" name="added_date"
+       value="<?php echo $fetch['added_date']; ?>"
+       class="form-control" required>
+</div>
+
+<div class="form-group mt-3">
+<input type="submit" name="updatetask"
+       value="Update Task"
+       class="btn btn-dark text-white">
+</div>
+
+</form>
+</section>
