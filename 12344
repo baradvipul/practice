@@ -1,0 +1,30 @@
+if(isset($_POST["updatetask"]))
+{
+    echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
+
+    $edit_id   = $_POST["edit_id"];
+    $taskname  = $_POST["task_name"];
+    $assign    = $_POST["assign-to"];
+    $status    = $_POST["status"];
+    $added_date= $_POST["added_date"];
+
+    $upd="UPDATE tbl_task SET 
+          taskname='$taskname',
+          userid='$assign',
+          status='$status',
+          added_date='$added_date'
+          WHERE taskid='$edit_id'";
+
+    $query=mysqli_query($conn,$upd);
+
+    if($query){
+        echo "<script>
+            alert('Task updated successfully');
+            window.location='index.php';
+        </script>";
+    } else {
+        die("Error: ".mysqli_error($conn));
+    }
+}
