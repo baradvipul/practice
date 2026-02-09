@@ -1,0 +1,46 @@
+body {
+    background: #f4f6fb;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background: linear-gradient(45deg,#667eea,#764ba2);
+    padding: 15px;
+}
+
+.navbar a {
+    color: white;
+    margin-right: 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 8px 15px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary { background:#667eea; color:white; }
+.btn-warning { background:#f0ad4e; color:white; }
+.btn-danger { background:#d9534f; color:white; }
+.btn-info { background:#5bc0de; color:white; }
+
+table {
+    width: 100%;
+    background: white;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
